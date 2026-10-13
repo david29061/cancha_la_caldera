@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cancha La Caldera | Fútbol 7 en Jutiapa</title>
+
+    <meta name="description" content="Disfruta la mejor experiencia en fútbol en Jutiapa. Reserva tu partido en Cancha La Caldera.">
+
+    <style>
+        /* =====================================
+           1. ESTILOS GENERALES
+        ===================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b1711;
+            color: white;
+            line-height: 1.7;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.3;
+        }
+
+        .verde {
+            color: #4ade80;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #22c55e;
+            color: #052e16;
+            padding: 14px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #86efac;
+            transform: translateY(-2px);
+        }
+
+        /* =====================================
+           2. MENU DE NAVEGACION
+        ===================================== */
+
+        header {
+            background: #07110b;
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #24452e;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            color: #4ade80;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #4ade80;
+        }
+
+        /* =====================================
+           3. PORTADA PRINCIPAL
+        ===================================== */
+
+        .portada {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(5, 20, 10, 0.95),
+                    rgba(5, 20, 10, 0.55)
+                ),
+                url("https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+        }
+
+        .contenido-portada {
+            max-width: 720px;
+            padding: 90px 0;
+        }
+
+        .etiqueta {
+            color: #4ade80;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .portada h1 {
+            font-size: clamp(34px, 5vw, 58px);
+            margin: 20px 0;
+        }
+
+        .portada p {
+            color: #d1d5db;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* =====================================
+           4. INFORMACION DE LA CANCHA
+        ===================================== */
+
+        .seccion {
+            padding: 85px 0;
+        }
+
+        .titulo-seccion {
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .descripcion {
+            color: #b7c7bb;
+            max-width: 750px;
+            margin-bottom: 35px;
+        }
+
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .tarjeta {
+            background: #14251a;
+            padding: 28px;
+            border: 1px solid #294733;
+            border-radius: 14px;
+        }
+
+        .tarjeta h3 {
+            color: #4ade80;
+            margin-bottom: 12px;
+        }
+
+        .tarjeta p {
+            color: #c3d1c6;
+        }
+
+        /* =====================================
+           5. MISION, VISION Y VALORES
+        ===================================== */
+
+        .institucional {
+            background: #101e15;
+        }
+
+        .institucional .tarjeta {
+            background: #192c20;
+        }
+
+        /* =====================================
+           6. TORNEOS
+           AGREGA NUEVOS TORNEOS AQUI
+        ===================================== */
+
+        .torneos {
+            background: #0b1711;
+        }
+
+        .torneo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            background: #14251a;
+            border: 1px solid #294733;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 18px;
+        }
+
+        .torneo h3 {
+            color: #4ade80;
+            margin-bottom: 8px;
+        }
+
+        .estado {
+            color: #86efac;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* =====================================
+           7. RESERVACIONES Y CONTACTO
+        ===================================== */
+
+        .reservaciones {
+            background: #14251a;
+            text-align: center;
+        }
+
+        .reservaciones p {
+            color: #c3d1c6;
+            margin: 15px 0 25px;
+        }
+
+        .informacion-contacto {
+            display: none;
+            background: #0b1711;
+            border: 1px solid #4ade80;
+            border-radius: 12px;
+            padding: 28px;
+            max-width: 600px;
+            margin: 30px auto 0;
+            text-align: left;
+        }
+
+        .informacion-contacto h3 {
+            color: #4ade80;
+            margin-bottom: 18px;
+        }
+
+        .informacion-contacto p {
+            margin: 12px 0;
+            color: white;
+        }
+
+        .informacion-contacto a {
+            color: #4ade80;
+        }
+
+        .acciones-contacto {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* =====================================
+           8. MENSAJE FINAL
+        ===================================== */
+
+        .final {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .final h2 {
+            color: #4ade80;
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .final p {
+            color: #c3d1c6;
+        }
+
+        /* =====================================
+           9. PIE DE PAGINA
+        ===================================== */
+
+        footer {
+            background: #07110b;
+            text-align: center;
+            padding: 25px;
+            color: #9cae9f;
+            font-size: 13px;
+        }
+
+        /* =====================================
+           10. ADAPTACION A CELULARES
+        ===================================== */
+
+        @media (max-width: 750px) {
+
+            .menu {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .portada {
+                min-height: 500px;
+            }
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            .torneo {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .titulo-seccion {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =====================================
+         MENU DE NAVEGACION
+    ===================================== -->
+
+    <header>
+        <div class="contenedor menu">
+
+            <div class="logo">
+                ⚽ CANCHA La Caldera
+            </div>
+
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#cancha">La cancha</a>
+                <a href="#institucional">Nosotros</a>
+                <a href="#torneos">Torneos</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- =====================================
+         PORTADA PRINCIPAL
+    ===================================== -->
+
+    <section class="portada" id="inicio">
+        <div class="contenedor contenido-portada">
+
+            <span class="etiqueta">
+                JUTIAPA, GUATEMALA · FÚTBOL 7
+            </span>
+
+            <h1>
+                ¿Quieres vivir la mejor experiencia
+                en fútbol en Jutiapa?
+                <span class="verde">¡Este es el lugar!</span>
+            </h1>
+
+            <p>
+                Disfruta de la pasión del fútbol con tus amigos,
+                organiza tus partidos y vive momentos inolvidables
+                en Cancha El Tablón.
+            </p>
+
+            <a href="#contacto" class="boton">
+                RESERVA TU CANCHA
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================
+         INFORMACION DE LA CANCHA
+    ===================================== -->
+
+    <section class="seccion" id="cancha">
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Vive el fútbol como nunca antes
+            </h2>
+
+            <p class="descripcion">
+                En Cancha La Caldera encontrarás un espacio
+                para disfrutar del fútbol 7, compartir con amigos
+                y vivir la emoción de cada partido.
+                ¡Reúne a tu equipo y ven a jugar!
+            </p>
+
+            <div class="tarjetas">
+
+                <div class="tarjeta">
+                    <h3>⚽ Partidos entre amigos</h3>
+                    <p>
+                        Reúne a tu equipo, organiza tu partido
+                        y disfruta de una experiencia llena de fútbol.
+                    </p>
+                </div>
+
+                <div class="tarjeta">
+                    <h3>🏆 Torneos de fútbol</h3>
+                    <p>
+                        Participa en nuestros torneos y demuestra
+                        de qué está hecho tu equipo.
+                    </p>
+                </div>
+
+                <div class="tarjeta">
+                    <h3>🤝 Diversión y convivencia</h3>
+                    <p>
+                        Comparte momentos inolvidables,
+                        fomenta el compañerismo y vive tu pasión.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================
+         MISION, VISION Y VALORES
+         EDITA ESTA SECCION PARA CAMBIARLOS
+    ===================================== -->
+
+    <section class="seccion institucional" id="institucional">
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Conócenos
+            </h2>
+
+            <p class="descripcion">
+                En Cancha La Caldera creemos que el fútbol
+                es mucho más que un deporte: es amistad,
+                esfuerzo, respeto y pasión.
+            </p>
+
+            <div class="tarjetas">
+
+                <!-- MISION -->
+                <div class="tarjeta">
+                    <h3>🎯 Nuestra misión</h3>
+                    <p>
+                        Brindar un espacio deportivo de calidad
+                        donde las personas puedan disfrutar del fútbol,
+                        fortalecer la convivencia y compartir
+                        momentos inolvidables.
+                    </p>
+                </div>
+
+                <!-- VISION -->
+                <div class="tarjeta">
+                    <h3>🌟 Nuestra visión</h3>
+                    <p>
+                        Ser una cancha de referencia en Jutiapa,
+                        reconocida por ofrecer una experiencia
+                        deportiva agradable y fomentar la pasión
+                        por el fútbol en nuestra comunidad.
+                    </p>
+                </div>
+
+                <!-- VALORES -->
+                <div class="tarjeta">
+                    <h3>💚 Nuestros valores</h3>
+                    <p>
+                        Respeto, responsabilidad, compañerismo,
+                        honestidad, disciplina y pasión por el deporte.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================
+         TORNEOS
+         AGREGA NUEVOS TORNEOS AQUI
+    ===================================== -->
+
+    <section class="seccion torneos" id="torneos">
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Próximos torneos
+            </h2>
+
+            <p class="descripcion">
+                Entérate de nuestros próximos torneos y
+                prepárate para competir con tu equipo.
+                Para conocer fechas e inscripciones,
+                comunícate con nosotros.
+            </p>
+
+            <!-- TORNEO 1 -->
+            <div class="torneo">
+
+                <div>
+                    <span class="estado">PRÓXIMAMENTE</span>
+
+                    <h3>🏆 Torneo de fútbol 7</h3>
+
+                    <p>Fecha: Por confirmar</p>
+
+                    <p>Inscripciones: Consulta por teléfono.</p>
+                </div>
+
+                <a href="#contacto" class="boton">
+                    Más información
+                </a>
+
+            </div>
+
+            <!-- TORNEO 2 -->
+            <div class="torneo">
+
+                <div>
+                    <span class="estado">PRÓXIMAMENTE</span>
+
+                    <h3>⚽ Campeonato entre amigos</h3>
+
+                    <p>Fecha: Por confirmar</p>
+
+                    <p>Información: Consulta por teléfono.</p>
+                </div>
+
+                <a href="#contacto" class="boton">
+                    Más información
+                </a>
+
+            </div>
+
+            <!--
+                PARA AGREGAR OTRO TORNEO:
+                COPIA UN BLOQUE COMPLETO <div class="torneo">
+                Y PEGALO DEBAJO DEL ANTERIOR.
+            -->
+
+        </div>
+    </section>
+
+
+    <!-- =====================================
+         CONTACTO Y RESERVACIONES
+    ===================================== -->
+
+    <section class="seccion reservaciones" id="contacto">
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Reserva tu cancha
+            </h2>
+
+            <p>
+                ¿Listo para jugar? Contáctanos para consultar
+                disponibilidad y reservar tu próximo partido.
+            </p>
+
+            <button
+                class="boton"
+                onclick="mostrarContacto()">
+
+                RENTAR CANCHA / INFORMACIÓN
+
+            </button>
+
+            <!-- INFORMACION QUE APARECE AL HACER CLIC -->
+
+            <div class="informacion-contacto" id="datosContacto">
+
+                <h3>📍 Información de Cancha La Caldera</h3>
+
+                <p>
+                    <strong>Nombre:</strong>
+                    Cancha La Caldera
+                </p>
+
+                <p>
+                    <strong>Tipo:</strong>
+                    Fútbol 7
+                </p>
+
+                <p>
+                    <strong>Dirección:</strong>
+                    El Tablón, Jutiapa, Guatemala.
+                </p>
+
+                <p>
+                    <strong>Coordenadas:</strong>
+                    14.2976443, -89.8747616
+                </p>
+
+                <p>
+                    <strong>Teléfono para reservas:</strong>
+                    <a href="tel:+50242199834">
+                        +502 4219-9834
+                    </a>
+                </p>
+
+                <div class="acciones-contacto">
+
+                    <a
+                        class="boton"
+                        href="https://wa.me/50242199834"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        CONSULTAR POR WHATSAPP
+
+                    </a>
+
+                    <a
+                        class="boton"
+                        href="https://www.google.com/maps?q=14.2976443,-89.8747616"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        CÓMO LLEGAR
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================
+         MENSAJE FINAL
+    ===================================== -->
+
+    <section class="final">
+        <div class="contenedor">
+
+            <h2>¡Te esperamos!</h2>
+
+            <p>
+                Ven con tus amigos, reúne a tu equipo y
+                disfruta de la mejor experiencia en fútbol
+                en Jutiapa.
+            </p>
+
+            <br>
+
+            <a href="#contacto" class="boton">
+                ¡VEN A JUGAR!
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- =====================================
+         PIE DE PAGINA
+    ===================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Cancha La Caldera.
+            Todos los derechos reservados.
+        </p>
+
+        <p>
+            El Tablón, Jutiapa, Guatemala.
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================
+         JAVASCRIPT: BOTON DE CONTACTO
+    ===================================== -->
+
+    <script>
+
+        function mostrarContacto() {
+
+            const informacion =
+                document.getElementById("datosContacto");
+
+            if (informacion.style.display === "block") {
+
+                informacion.style.display = "none";
+
+            } else {
+
+                informacion.style.display = "block";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
